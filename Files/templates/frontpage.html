@@ -1,0 +1,75 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+	<link href="{{ url_for('static', filename='main14.css') }}" rel="stylesheet">
+    <title>Attendance Tracking system</title>
+	
+</head>  
+<body>
+
+<div id="content">
+<div id="header">
+	
+	<img src="{{ url_for('static', filename='praxis.png') }}" alt="">
+	<h1 style="float:left;"> &ensp; Attendance Update details </h1>
+	<div style="float:right;top:2%;">
+	<form action="/shutdown", method="POST">
+		<button id="click" type="submit" class="button-basic1">Shutdown</button>
+	</form>
+	</div>
+</div>
+<div class="row" style="width:100%;">
+  
+  <div class="body1" style="text-align:center;">
+  <table>
+  <thead>
+  <tr>
+  <th colspan=2 align="center"><h2 style="text-align:center;"> Attendance Upload </h2></th>
+  </tr>
+  </thead>
+
+     
+    <form action="{{ url_for('get_results') }}" method="Post" enctype="multipart/form-data" style="display: inline-block;">
+		<tbody>
+		<tr>
+		<td colspan=2 align="center">{{ ll}}</td>
+		</tr>
+		<tr>
+		<td><label>Date of Class: </label></td>
+		<td><input type="date" id="dclass" name="dclass"><br></td>
+		
+		</tr>
+		<tr>
+		<td><label>Select image</label></td>
+			<div class="custom-file">
+				<td align="center"><input type="file" class="custom-file-input" name="image" id="image"><br><br></td>
+			</div>
+		</tr>
+		<tr>
+		<td colspan=2 align="center">
+		<button type="submit" id="button" class="button-basic">Submit<div id="loading"></div></button>
+		<button type="reset" value="Reset" class="button-basic">Reset</button></td>
+		</tr>
+		
+		
+	</form>
+	<tr>
+	<form action="/goback", method="POST">
+		<td colspan=2 align="center"><button id="click" type="submit" class="button-basic">Back</button></td>
+	</form>
+	</tr>
+	</tbody>
+	</table>
+	{{ subj}}
+	
+	</div>
+	
+</div>
+</div>
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="{{ url_for('static', filename='main3.js') }}"></script>
+    
+</body>  
+</html>  
+

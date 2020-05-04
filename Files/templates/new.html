@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"">
+    <title>Attendance track</title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='main14.css') }}" rel="stylesheet">
+  </head>
+  <body>
+   <div id="header">
+	
+	<img src="{{ url_for('static', filename='praxis.png') }}" alt="">
+	<h1 style="float:left;"> &ensp;Attendance Tracking System </h1>
+	<div style="float:right;top:2%;">
+	<form action="/shutdown", method="POST">
+		<button id="click" type="submit" class="button-basic1">Shutdown</button>
+	</form>
+	</div>
+   </div>
+	
+	<div class="body1">
+	<table>
+		<thead>
+		<tr>
+		<th colspan=3><h2 style="text-align:center;">Select a batch</h2></th>
+		</tr>
+		</thead>
+        <form action="/" method="POST">
+		<tbody>
+          {{ form.csrf_token }}
+		 
+		  {{ form.hidden_tag() }}
+		  <tr>
+		  <td><label>Batch</label></td>
+          <td colspan=2>{{ form.batch(class="form-control",style="width:75%;") }}<br></td>
+		  </tr>
+		  <tr>
+		  <td><label>Faculty</label></td>
+		  <td colspan=2>{{ form.faculty(id="faculty_select", class="form-control",style="width:75%;") }}<br></td>
+		  </tr>
+		  <tr>
+		  <td><label>Term</label></td>
+		  <td colspan=2>{{ form.term(id="term_select", class="form-control",style="width:75%;")}}<br></td>
+		  </tr>
+		  <tr>
+		  <td><label>Subject</label></td>
+		  <td colspan=2>{{ form.subject(id="subject_select", class="form-control",style="width:75%;") }}<br></td>
+		  </tr>
+          <tr>
+          
+		  <td colspan=3 align="center"><button id="click" type="submit" class="button-basic">Submit</button></td>
+          </tr>
+		  
+		  
+        </form>
+		</tbody>
+		</table>
+      </div>
+	  
+	  
+    
+	  <div class="column " >
+	  
+	    <table>
+		<thead>
+		<tr>
+		<th colspan="2"><h3 style="text-align:center;" id="add"> New Batch folder creation </h3></th>
+		</tr>
+		</thead>
+		<form action="{{ url_for('newbatch') }}" method="Post">
+		<tbody>
+			<tr>
+			<td><label> Batch Name</label></td>
+			<td><input type = "text" name = "batchname" class="form-control" required><br></td>
+			</tr>
+			<tr>
+			<td><label> Folder path </label></td>
+			<td><input type = "text" name="path" class="form-control" required><br></td>
+			</tr>
+			<tr>
+			<td><label> AWS Access_Key </label></td>
+			<td><input type = "text" name = "accesskey" class="form-control" required><br></td>
+			</tr>
+			<tr>
+			<td><label> AWS Secret_key </label></td>
+			<td><input type = "text" name = "secretkey" class="form-control" required><br></td>
+			</tr>
+			<tr>
+			<td colspan = "2" align="center"><button class="button-basic" type="submit">Submit</button>
+			<button type="reset" class="button-basic">Reset</button></td>
+			</tr>
+			</tbody>
+		</form>
+		{{ batch }}
+		</table>
+	
+	 </div>
+	
+	
+	 
+	 <div class="col " >
+	    <table>
+		<thead>
+		<tr>
+		<th colspan="2"><h3 style="text-align:center;"> Add New Faculty </h3></th>
+		</tr>
+		</thead>
+		<form action="{{ url_for('newfaculty') }}" method="Post">
+		<tbody>
+			<tr>
+			<td><label> Faculty</label></td>
+			<td><input type = "text" name = "facu" class="form-control" required><br></td>
+			</tr>
+			<tr>
+			<td><label> Term </label></td>
+			<td><input type = "text" name="ter" class="form-control" required><br></td>
+			</tr>
+			<tr>
+			<td><label> Subject </label></td>
+			<td><input type = "text" name = "subj" class="form-control" required><br></td>
+			</tr>
+			<tr>
+			<tr>
+			<td><label> Subject Change(if needed) </label></td>
+			<td><input type = "text" name = "newd" class="form-control"><br></td>
+			</tr>
+			<tr>
+			<td><label> Faculty Change(if needed) </label></td>
+			<td><input type = "text" name = "facd" class="form-control"><br></td>
+			</tr>
+			<tr>
+			<td colspan = "2" align="center"><button type="submit" class="button-basic">Submit</button>
+			<button type="reset" class="button-basic">Reset</button></td>
+			</tr>
+			</tbody>
+		</form>
+		{{ batch }}
+		</table>
+		</div>
+	
+	
+	
+	  
+	  
+	  
+
+      
+    
+
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='main2.js') }}"></script>
+  </body>
+</html>
